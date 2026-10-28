@@ -1,0 +1,6 @@
+Setelah `php artisan route:list`, pastikan ada baris seperti ini:
+
+GET|HEAD  /  home  HomeController@index
+
+Route lain bawaan Laravel (storage, ignite) boleh ada.
+Yang wajib untuk pertemuan 7 hanya route bernama `home`.
