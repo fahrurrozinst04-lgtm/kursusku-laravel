@@ -9,7 +9,7 @@
             <div class="card-body p-4">
                 <h1 class="h3 mb-3">Pendaftaran Kursus</h1>
                 <p class="text-secondary">
-                    Pilih kursus. Jumlah kursi akan dicek tanpa reload halaman.
+                    Pilih kursus. Kuota dan status dibaca dari database, tanpa reload halaman.
                 </p>
 
                 <form method="POST" action="{{ route('enrollments.preview') }}">
@@ -44,10 +44,10 @@
                                 required>
                             <option value="">-- pilih kursus --</option>
 
-                            @foreach ($courses as $id => $course)
-                                <option value="{{ $id }}"
-                                    @selected(old('course_id') == $id)>
-                                    {{ $course['name'] }}
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}"
+                                    @selected(old('course_id') == $course->id)>
+                                    {{ $course->code }} — {{ $course->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -57,7 +57,7 @@
                     </div>
 
                     <div id="availability" class="alert alert-secondary">
-                        Pilih kursus untuk melihat sisa kursi.
+                        Pilih kursus untuk melihat kuota dan status.
                     </div>
 
                     @if ($errors->any())
